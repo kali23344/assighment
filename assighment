@@ -1,0 +1,53 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+void ReadProgram(ifstream& input,
+    vector<string>&program)
+    {
+        string line;
+
+        
+while (getline(input, line)) {
+        
+           program.push_back(line);
+
+
+        }
+    }
+void OpenFile(ifstream & input) {
+    input.open("xxx.asm");
+    if(input.fail()){
+        cout <<"Error file is not found"
+            << endl;
+            exit(-1);
+    }
+}
+void printProgram(vector<string>& prg) {
+    int count = 0;
+    for (auto line : prg) {
+        count++;
+        cout <<count<< " : " << line << endl;
+    }
+}
+void Runner(vector<string>& prg) {
+    int count = 0;
+    for (auto line : prg) {
+        count++;
+        cout << count << " : " << line << endl;
+        cout << "break the command" << endl;
+        cout << "execute the command" <<endl;
+        cout << endl <<endl;
+    }
+}
+int main()
+{
+    vector<string> program;
+    ifstream input;
+    OpenFile(input);
+    ReadProgram(input,program);
+    //printProgram(program);
+    Runner(program);
+    input.close();
+    return 0;
+}
